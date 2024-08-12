@@ -23,6 +23,8 @@ nav{
 
 a{
     color: black;
+}
+nav a {
     text-decoration: none;
 }
 
