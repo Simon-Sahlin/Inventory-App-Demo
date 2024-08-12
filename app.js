@@ -13,9 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const indexRouter = require("./routes/indexRouter");
 const itemsRouter = require("./routes/itemsRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
 
 
 app.use("/items", itemsRouter);
+app.use("/categories", categoriesRouter);
 app.use("/", indexRouter);
 
 
