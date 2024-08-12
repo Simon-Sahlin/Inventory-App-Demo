@@ -7,17 +7,10 @@
     <title>Inventory App</title>
 </head>
 <body>
-    <nav>
-        <a href="">Home</a>
-        <a href="">Items</a>
-        <a href="">Categories</a>
-        <hr>
-        <a href="">Create new item</a>
-        <a href="">Create new category</a>
-    </nav>
+    <%- include('./partials/nav.ejs') %>
     <div id="indexBody">
         <h1>Welcome!</h1>
-        <h2>Click <a href="">items</a> to view inventory</h2>
+        <h2>Click <a href="/items">items</a> to view inventory</h2>
         <p>This is a practice project created for the full stack course on The Odin Project. Created by Simon Sahlin. <a href="https://github.com/Simon-Sahlin/Inventory-App-Demo">Github</a></p>
     </div>
 </body>
