@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 
-
+const { items } = require("../utils/dummyData");
 
 
 router.get("/newItem", (req, res) => {
@@ -29,7 +29,7 @@ router.get("/:itemId", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    res.render("items/index");
+    res.render("items/index", {items: items});
 });
 
 module.exports = router;

@@ -51,4 +51,4 @@ const rel_items_categories = [
 
 ]
 
-module.export = { items, categories, rel_items_categories}
+module.exports = { items, categories, rel_items_categories}

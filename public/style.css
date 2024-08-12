@@ -50,3 +50,43 @@ h2{
     width: 50ch;
     text-align: center;
 }
+
+#mainBody{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    padding-top: 3em;
+}
+
+#itemsWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    border: 2px solid lightblue;
+    border-radius: 8px;
+    padding: 16px;
+    padding-right: 48px;
+    gap: 16px;
+    height: 4em;
+    overflow: hidden;
+}
+
+.item div{
+    width: 30px;
+    height: 4em;
+    padding: 1px;
+    margin: -16px;
+    margin-right: 0px;
+}
+
+.itemSellerP{
+    flex-grow: 1;
+    text-align: right;
+}
