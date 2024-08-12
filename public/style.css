@@ -23,7 +23,12 @@ nav{
 
 a{
     color: black;
+    transition: color .1s;
 }
+a:hover{
+    color: rgb(160, 160, 160);
+}
+
 nav a {
     text-decoration: none;
 }
