@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 
-const { items } = require("../utils/dummyData");
+const db = require("../db/queries");
 
 
 
@@ -32,7 +32,8 @@ router.get("/new", (req, res) => {
     res.render("items/newItem");
 });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+    items = await db.getAllItems()
     res.render("items/index", {items: items});
 });
 

@@ -20,6 +20,5 @@ app.use("/items", itemsRouter);
 app.use("/categories", categoriesRouter);
 app.use("/", indexRouter);
 
-
 const PORT = 6969;
 app.listen(PORT, ()=> console.log(`YIPPI!! Express app - listening on port ${PORT}`));

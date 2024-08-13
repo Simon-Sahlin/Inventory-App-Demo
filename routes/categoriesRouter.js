@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const router = Router();
 
-const { categories } = require("../utils/dummyData");
+const db = require("../db/queries");
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+    const categories = await db.getAllCategories();
     res.render("categories/index", {categories: categories});
 });
 
