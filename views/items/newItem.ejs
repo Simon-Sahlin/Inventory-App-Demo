@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Inventory App</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div id="mainBody">
+        <h2>Create New Item</h2>
+        <hr>
+        <div id="itemsWrapper">
+            <form action="/items/createItem" method="post">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price">
+                <label for="seller">Seller Name</label>
+                <input type="text" name="seller" id="seller">
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
