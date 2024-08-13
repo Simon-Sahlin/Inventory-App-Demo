@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const { check, validationResult } = require("express-validator");
 
 const db = require("../db/queries");
 
@@ -23,13 +24,32 @@ const db = require("../db/queries");
 //     res.send("WIP")
 // });
 
+const validateItem = [
+    check("name").trim()
+        .notEmpty().withMessage("Name can not empty")
+        .isAlpha().withMessage("Name must contain letters only"),
+    check("price").trim()
+        .isNumeric().withMessage("Price must be a number")
+        .notEmpty().withMessage("Price can not empty"),
+    check("seller").trim()
+        .notEmpty().withMessage("Seller name can not empty")
+        .isAlpha().withMessage("Seller name must contain letters only"),
+]
 
-router.post("/createItem", (req, res) => {
-    res.send("WIP")
-});
+router.post("/createItem", [validateItem, async (req, res) => {
+    const { name, price, seller } = req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+        return res.status(400).render("items/newItem", {values: {name, price, seller}, errors: errors.array()});
+    }
+
+    await db.createItem(name, parseInt(price), seller);
+    res.redirect("/items");
+}]);
 
 router.get("/new", (req, res) => {
-    res.render("items/newItem");
+    res.render("items/newItem", {values: {name:"", price:0, seller:""}});
 });
 
 router.get("/", async (req, res) => {

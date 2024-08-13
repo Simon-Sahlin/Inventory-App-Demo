@@ -149,3 +149,8 @@ button:hover{
     transition: background-color .1s;
     background-color: var(--blue);
 }
+
+.errorList{
+    color: red;
+    font-weight: 500;
+}
