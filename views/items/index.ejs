@@ -13,12 +13,14 @@
         <hr>
         <div id="itemsWrapper">
             <% locals.items.forEach(item => {%>
-                <div class="item">
-                    <div style="<%= "background-color: hsl(" + Math.floor(Math.random() * 360) + ", 100%, 50%);" %>"></div>
-                    <h3><%=item.name%></h3>
-                    <p><%=item.price + "$"%></p>
-                    <p class="itemSellerP">Seller: <%=item.seller_name%></p>
-                </div>
+                <a href="items/<%=item.id%>">
+                    <div class="item">
+                        <div style="<%= "background-color: hsl(" + Math.floor(Math.random() * 360) + ", 100%, 50%);" %>"></div>
+                        <h3><%=item.name%></h3>
+                        <p><%=item.price + "$"%></p>
+                        <p class="itemSellerP">Seller: <%=item.seller_name%></p>
+                    </div>
+                </a>
             <% }); %>
         </div>
     </div>

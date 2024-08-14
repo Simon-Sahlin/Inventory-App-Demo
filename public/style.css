@@ -63,7 +63,7 @@ a:hover{
     color: rgb(160, 160, 160);
 }
 
-nav a {
+nav a{
     text-decoration: none;
 }
 
@@ -99,6 +99,10 @@ h2{
     gap: 8px;
 }
 
+#itemsWrapper > a{
+    text-decoration: none;
+}
+
 .item{
     display: flex;
     align-items: center;
@@ -125,6 +129,13 @@ h2{
     text-align: right;
 }
 
+.singleItem{
+    background-color: aliceblue;
+    border: 2px solid lightblue;
+    border-radius: 8px;
+    padding: 16px;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -137,6 +148,13 @@ input{
     border: 2px solid lightblue;
 }
 
+.itemButtons{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 32px;
+    padding-bottom: 0px;
+}
+
 button{
     padding: 8px 16px;
     max-width: 100px;
@@ -144,10 +162,27 @@ button{
     border-radius: 8px;
     border: none;
     color: white;
+    font-weight: 700;
+    font-size: .9em;
+    cursor: pointer;
 }
 button:hover{
     transition: background-color .1s;
     background-color: var(--blue);
+}
+
+.greenButton{
+    background-color: var(--green-dark);
+}
+.greenButton:hover{
+    background-color: var(--green);
+}
+
+.redButton{
+    background-color: var(--red-dark);
+}
+.redButton:hover{
+    background-color: var(--red);
 }
 
 .errorList{

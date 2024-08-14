@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>Inventory App</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div id="mainBody">
+        <h2>Edit Item <%= locals.itemId %></h2>
+        <hr>
+        <div id="itemsWrapper">
+            <form action="/items/<%= locals.itemId %>/update" method="post">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%=locals.values.name%>" required>
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" value="<%=locals.values.price%>" required>
+                <label for="seller">Seller Name</label>
+                <input type="text" name="seller" id="seller" value="<%=locals.values.seller%>" required>
+                <%- include('../partials/errorList.ejs') %>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

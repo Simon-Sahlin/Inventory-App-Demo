@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Inventory App</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div id="mainBody">
+        <h2>View Item <%= locals.item.id %></h2>
+        <hr>
+        <div id="itemsWrapper">
+            <div class="singleItem">
+                <h2><%=locals.item.name%></h2>
+                <h3><%=locals.item.price + "$"%></h3>
+                <p class="itemSellerP">Seller: <%=locals.item.seller_name%></p>
+                <div class="itemButtons">
+                    <button class="greenButton" onclick="location.href='<%=locals.item.id%>/edit'">EDIT</button>
+                    <form action="/items/<%=locals.item.id%>/delete" method="post">
+                        <button class="redButton" type="submit">DELETE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
