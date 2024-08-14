@@ -14,12 +14,14 @@ async function getAllCategories() {
     return rows;
 }
 
-async function insertItem(name){
-    await pool.query("INSERT INTO categories (name) VALUES  ($1)", [name]);
+async function createCategory(name){
+    await pool.query("INSERT INTO categories (name) VALUES ($1)", [name]);
 }
+
 
 module.exports = {
     getAllItems,
     createItem,
     getAllCategories,
+    createCategory,
 };
