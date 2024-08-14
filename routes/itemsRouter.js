@@ -65,9 +65,9 @@ router.post("/:itemId/update",[validateItem, async (req, res) => {
     res.redirect("/items/"+itemId);
 }]);
 
-router.post("/:itemId/delete", (req, res) => {
+router.post("/:itemId/delete", async (req, res) => {
     const { itemId } = req.params;
-    db.deleteFromId("items", itemId);
+    await db.deleteFromId("items", itemId);
     res.redirect("/items");
 });
 
