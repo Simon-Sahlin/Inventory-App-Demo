@@ -27,13 +27,13 @@ const db = require("../db/queries");
 const validateItem = [
     check("name").trim()
         .notEmpty().withMessage("Name can not empty")
-        .isAlpha().withMessage("Name must contain letters only"),
+        .isAlpha('en-US', {ignore: '\s'}).withMessage("Name must contain letters only"),
     check("price").trim()
         .isNumeric().withMessage("Price must be a number")
         .notEmpty().withMessage("Price can not empty"),
     check("seller").trim()
         .notEmpty().withMessage("Seller name can not empty")
-        .isAlpha().withMessage("Seller name must contain letters only"),
+        .isAlpha('en-US', {ignore: '\s'}).withMessage("Seller name must contain letters only"),
 ]
 
 router.post("/createItem", [validateItem, async (req, res) => {
