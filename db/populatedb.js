@@ -30,6 +30,22 @@ VALUES
     ('Drinks')
 ;
 
+CREATE TABLE IF NOT EXISTS items_categories_rel (
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  itemId INT, 
+  categoryId INT
+);
+
+INSERT INTO items_categories_rel (itemId, categoryId) 
+VALUES 
+    (1, 1), 
+    (2, 2), 
+    (3, 2),
+    (4, 1),
+    (4, 3),
+    (5, 3)
+;
+
 `;
 
 async function main() {

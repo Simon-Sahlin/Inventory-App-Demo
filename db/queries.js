@@ -5,6 +5,11 @@ async function getAllItems() {
     return rows;
 }
 
+async function getItemsByCategory(catId){
+    const { rows } = await pool.query("SELECT * FROM items_categories_rel INNER JOIN items ON items_categories_rel.itemId = items.id WHERE categoryId = $1", [catId]);
+    return rows;
+}
+
 async function createItem(name, price, seller_name){
     await pool.query("INSERT INTO items (name, price, seller_name) VALUES ($1, $2, $3)", [name, price, seller_name]);
 }
@@ -48,5 +53,6 @@ module.exports = {
     selectFromId,
     updateItem,
     deleteFromId,
-    updateCategory
+    updateCategory,
+    getItemsByCategory
 };

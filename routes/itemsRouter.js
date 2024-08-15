@@ -19,7 +19,9 @@ const validateItem = [
 ]
 
 router.post("/createItem", [validateItem, async (req, res) => {
-    const { name, price, seller } = req.body;
+    const { name, price, seller, selectCatgs } = req.body;
+
+    console.log(selectCatgs);
 
     const errors = validationResult(req);
     if (!errors.isEmpty()){
@@ -31,8 +33,9 @@ router.post("/createItem", [validateItem, async (req, res) => {
 }]);
 
 
-router.get("/new", (req, res) => {
-    res.render("items/newItem", {values: {name:"", price:0, seller:""}});
+router.get("/new", async(req, res) => {
+    const categories = await db.getAllCategories();
+    res.render("items/newItem", {values: {name:"", price:0, seller:""}, catgs:categories});
 });
 
 /* ------------------------------------ - ----------------------------------- */
@@ -74,8 +77,10 @@ router.post("/:itemId/delete", async (req, res) => {
 /* ------------------------------------ - ----------------------------------- */
 
 router.get("/", async (req, res) => {
-    items = await db.getAllItems()
-    res.render("items/index", {items: items});
+    const categories = await db.getAllCategories();
+    const selectedCatg = req.query.selectedCatg || 0;
+    const items = selectedCatg == 0 ? await db.getAllItems() : await db.getItemsByCategory(selectedCatg);
+    res.render("items/index", {items: items, catgs:categories, selCatg:selectedCatg});
 });
 
 

@@ -11,6 +11,14 @@
     <div id="mainBody">
         <h2>All Items</h2>
         <hr>
+        <form action="/items" method="get">
+            <select name="selectedCatg" id="selectedCatg" onchange="this.form.submit()">
+                <option value="0">All Categories</option>
+                <%locals.catgs.forEach(catg => {%>
+                    <option value="<%=catg.id%>" <%=catg.id == locals.selCatg ? "selected" : ""%>><%=catg.name%></option>
+                <%})%>
+            </select>
+        </form>
         <div id="itemsWrapper">
             <% locals.items.forEach(item => {%>
                 <a href="items/<%=item.id%>">

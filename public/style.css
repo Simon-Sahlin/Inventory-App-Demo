@@ -141,7 +141,7 @@ form{
     flex-direction: column;
 }
 
-input{
+input, select{
     margin-bottom: 1em;
     padding: 0.5em;
     border-radius: 8px;
