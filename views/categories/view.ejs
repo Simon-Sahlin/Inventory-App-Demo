@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Inventory App</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <div id="mainBody">
+        <h2>View Category <%= locals.category.id %></h2>
+        <hr>
+        <div id="itemsWrapper">
+            <div class="singleItem">
+                <h2><%=locals.category.name%></h2>
+                <div class="itemButtons">
+                    <button class="greenButton" onclick="location.href='<%=locals.category.id%>/edit'">EDIT</button>
+                    <form action="/categories/<%=locals.category.id%>/delete" method="post">
+                        <button class="redButton" type="submit">DELETE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

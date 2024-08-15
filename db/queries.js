@@ -24,6 +24,10 @@ async function createCategory(name){
     await pool.query("INSERT INTO categories (name) VALUES ($1)", [name]);
 }
 
+async function updateCategory(id, name){
+    await pool.query("UPDATE categories SET name=$1 WHERE id=$2", [name, id])
+}
+
 /* ------------------------------------ - ----------------------------------- */
 
 async function selectFromId(table, id){
@@ -43,5 +47,6 @@ module.exports = {
     createCategory,
     selectFromId,
     updateItem,
-    deleteFromId
+    deleteFromId,
+    updateCategory
 };
