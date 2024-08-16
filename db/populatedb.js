@@ -52,7 +52,7 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: "postgresql://"+process.env.dbUser+":"+process.env.dbPassword+"@"+process.env.dbHost+":"+process.env.dbPort+"/inventory_app_db",
+    connectionString: process.env.dbConnectionString,
   });
   await client.connect();
   await client.query(SQL);
