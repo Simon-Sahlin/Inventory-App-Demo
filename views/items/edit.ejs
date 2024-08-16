@@ -19,6 +19,11 @@
                 <input type="number" name="price" id="price" value="<%=locals.values.price%>" required>
                 <label for="seller">Seller Name</label>
                 <input type="text" name="seller" id="seller" value="<%=locals.values.seller%>" required>
+                <select name="selectCatgs" id="selectCatgs" multiple>
+                    <%locals.catgs.forEach(catg => {%>
+                        <option value="<%=catg.id%>" <%= locals.selCatgs.includes(catg.id) ? "selected" : "" %> ><%=catg.name%></option>
+                    <%})%>
+                </select>
                 <%- include('../partials/errorList.ejs') %>
                 <button type="submit">Save Changes</button>
             </form>

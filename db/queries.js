@@ -11,7 +11,8 @@ async function getItemsByCategory(catId){
 }
 
 async function createItem(name, price, seller_name){
-    await pool.query("INSERT INTO items (name, price, seller_name) VALUES ($1, $2, $3)", [name, price, seller_name]);
+    let { rows } = await pool.query("INSERT INTO items (name, price, seller_name) VALUES ($1, $2, $3) RETURNING id", [name, price, seller_name]);
+    return rows[0].id;
 }
 
 async function updateItem(id, name, price, seller_name){
@@ -35,6 +36,27 @@ async function updateCategory(id, name){
 
 /* ------------------------------------ - ----------------------------------- */
 
+async function createItemCatgRel(id, catgs){
+    let vString = "INSERT INTO items_categories_rel (itemId, categoryId) VALUES ";
+    catgs.forEach(catg=>{
+        vString += "("+id+","+catg+"),";
+    });
+    vString = vString.slice(0,-1);
+    await pool.query(vString);
+}
+
+async function getItemCategoryRel(itemId){
+    const { rows } = await pool.query("SELECT * FROM items_categories_rel WHERE itemId=$1", [itemId]);
+    return rows;
+}
+
+async function replaceItemCategoryRel(id, catgs){
+    await pool.query("DELETE FROM items_categories_rel WHERE itemId=$1", [id])
+    await createItemCatgRel(id, catgs);
+}
+
+/* ------------------------------------ - ----------------------------------- */
+
 async function selectFromId(table, id){
     const { rows } = await pool.query("SELECT * FROM "+table+" WHERE id=" + id);
     return rows[0];
@@ -54,5 +76,8 @@ module.exports = {
     updateItem,
     deleteFromId,
     updateCategory,
-    getItemsByCategory
+    getItemsByCategory,
+    createItemCatgRel,
+    getItemCategoryRel,
+    replaceItemCategoryRel
 };
