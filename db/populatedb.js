@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { Client } = require("pg");
 
 const SQL = `
@@ -51,7 +52,7 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: "postgresql://postgres:password@localhost:5432/inventory_app_db",
+    connectionString: "postgresql://"+process.env.dbUser+":"+process.env.dbPassword+"@"+process.env.dbHost+":"+process.env.dbPort+"/inventory_app_db",
   });
   await client.connect();
   await client.query(SQL);
