@@ -11,7 +11,6 @@ app.use(express.static(assetPath));
 
 app.use(express.urlencoded({ extended: true }));
 
-
 const indexRouter = require("./routes/indexRouter");
 const itemsRouter = require("./routes/itemsRouter");
 const categoriesRouter = require("./routes/categoriesRouter");
